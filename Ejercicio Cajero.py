@@ -45,7 +45,7 @@ while True:
     seleccion_cliente = lista_nombres[seleccion]
     if seleccion in range(len(lista_nombres)):
         while True:
-            operaciones = int(input('¿Qué quiere hacer?:\n0: Ver\n1: Retirar\n2: Consignar\n3: SALIR\n'))
+            operaciones = int(input('¿Qué quiere hacer?:\n0: Ver\n1: Retirar\n2: Transferir\n3: Consignar\n4: SALIR\n'))
             saldo_cuenta_usuario = dict_users[seleccion_cliente]
             # Ver
             if operaciones == 0:
@@ -56,9 +56,16 @@ while True:
                 if valor_retiro <= saldo_cuenta_usuario:
                     print('Retiro exitoso')
                     dict_users[seleccion_cliente] = saldo_cuenta_usuario - valor_retiro
-                    print('Su saldo es:', dict_users[seleccion_cliente])                   
-            # Consignar
+                    print('Su saldo es:', dict_users[seleccion_cliente])
+ # Transferir
             elif operaciones == 2:
+                valor_transferencia = int(input('¿Cunáto quiere transferir: '))
+                if valor_transferencia <= saldo_cuenta_usuario:
+                    print('Transferencia Exitosa')
+                    dict_users[seleccion_cliente] = saldo_cuenta_usuario - valor_transferencia
+                    print('Su saldo es:', dict_users[seleccion_cliente])                     
+ # Consignar
+            elif operaciones == 3:
                 valor_consignar = int(input('¿Cunáto quiere consignar: '))
                 dict_users[seleccion_cliente] = saldo_cuenta_usuario + valor_consignar
             else:
